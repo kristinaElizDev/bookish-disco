@@ -1,0 +1,27 @@
+{
+  "name": "github/bookish-disco",
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "github/gh-kustomize": {
+          "permissions": {
+            "contents": "read",
+            "packages": "read"
+          }
+        },
+        "github/features": {
+          "permissions": {
+            "contents": "read",
+            "packages": "read"
+          }
+        }
+      },
+      "github/go-redis": {
+        "permissions": {
+          "contents": "read",
+          "packages": "read"
+        }
+      }
+    }
+  }
+}
