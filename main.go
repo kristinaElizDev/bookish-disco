@@ -8,7 +8,7 @@ import (
 
 	"github.com/redis/go-redis-entraid"
 	"github.com/redis/go-redis-entraid/identity"
-	"github.com/redis/go-redis/v9"
+	"github.com/github/go-redis"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 
 )
