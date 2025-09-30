@@ -1,10 +1,5 @@
 {
   "name": "github/bookish-disco",
-  "features": {
-    "ghcr.io/github/features/goproxy:1": {}
-  },
-  "onCreateCommand": "/usr/local/share/goproxy-init.sh",
-  "postStartCommand": "/usr/local/share/goproxy-init.sh --override",
   "customizations": {
     "codespaces": {
       "repositories": {
@@ -40,12 +35,12 @@
         }
       }
     }
-  }
-  //   "containerEnv": {
-  //   "GOPROXY": "https://goproxy.githubapp.com/mod,https://proxy.golang.org/,direct",
-  //   "GOPRIVATE": "",
-  //   "GONOPROXY": "",
-  //   "GONOSUMDB": "github.com/github/*"
-  //   },
-  //   "postCreateCommand": "echo \"machine goproxy.githubapp.com login nobody password $GITHUB_TOKEN\" >> $HOME/.netrc"
+  },
+    "containerEnv": {
+    "GOPROXY": "https://goproxy.githubapp.com/mod,https://proxy.golang.org/,direct",
+    "GOPRIVATE": "",
+    "GONOPROXY": "",
+    "GONOSUMDB": "github.com/github/*"
+    },
+    "postCreateCommand": "echo \"machine goproxy.githubapp.com login nobody password $GITHUB_TOKEN\" >> $HOME/.netrc"
 }
