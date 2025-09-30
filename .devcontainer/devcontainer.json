@@ -3,6 +3,8 @@
   "features": {
     "ghcr.io/github/features/goproxy:1": {}
   },
+  "onCreateCommand": "/usr/local/share/goproxy-init.sh",
+  "postStartCommand": "/usr/local/share/goproxy-init.sh --override",
   "customizations": {
     "codespaces": {
       "repositories": {
