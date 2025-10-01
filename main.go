@@ -9,11 +9,12 @@ import (
 	"github.com/redis/go-redis-entraid"
 	"github.com/redis/go-redis-entraid/identity"
 	"github.com/redis/go-redis/v9"
+	// "github.com/github/go-redis/crdb"
 )
 
 
 func main() {
-	// Auth Variables Needed for SPN Connection 
+	Auth Variables Needed for SPN Connection 
 	client_id, ok := os.LookupEnv("AZURE_CLIENT_ID")
 		if !ok {
 			log.Println("AZURE_CLIENT_ID environment variable is required")
