@@ -9,3 +9,4 @@ Azure AMR Testing - for go!
 
 Go Proxy: 
 - Updates to devcontainer to use go proxy and pull 
+- if you get auth errors with this, replace your PAT in netrc

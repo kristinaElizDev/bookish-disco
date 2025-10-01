@@ -8,9 +8,7 @@ import (
 
 	"github.com/redis/go-redis-entraid"
 	"github.com/redis/go-redis-entraid/identity"
-	"github.com/github/go-redis"
-	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-
+	"github.com/redis/go-redis/v9"
 )
 
 
@@ -30,14 +28,7 @@ func main() {
 		if !ok {
 			log.Println("AZURE_TENANT_ID environment variable is required")
 		}
-
-	cred, err := azidentity.NewDefaultAzureCredential(nil)
-    if err != nil {
-    	log.Println("Error !! ")
-    }
-
-	log.Println(cred)
-
+	
 	provider, err := entraid.NewConfidentialCredentialsProvider(
 		entraid.ConfidentialCredentialsProviderOptions{
 			ConfidentialIdentityProviderOptions: identity.ConfidentialIdentityProviderOptions{
