@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"log"
+	"crypto/tls"
 
 
 	"github.com/redis/go-redis-entraid"
@@ -14,7 +15,7 @@ import (
 
 
 func main() {
-	Auth Variables Needed for SPN Connection 
+	// Auth Variables Needed for SPN Connection 
 	client_id, ok := os.LookupEnv("AZURE_CLIENT_ID")
 		if !ok {
 			log.Println("AZURE_CLIENT_ID environment variable is required")
@@ -37,9 +38,10 @@ func main() {
 				ClientSecret:    client_secret,
 				CredentialsType: identity.ClientSecretCredentialType,
 				Authority: identity.AuthorityConfiguration{
-					AuthorityType: identity.AuthorityTypeDefault,
+					AuthorityType: identity.AuthorityTypeMultiTenant,
 					TenantID:     tenant_id,
 				},
+				Scopes: []string{"https://redis.azure.com/.default"},
 			},
 		},
 	)
@@ -51,12 +53,15 @@ func main() {
 	client := redis.NewClient(&redis.Options{
 			Addr: "data-architecture-test-amr.eastus.redis.azure.net:10000",
 			StreamingCredentialsProvider: provider,
+			TLSConfig: &tls.Config{
+				MinVersion: tls.VersionTLS12,
+			},
 		})
 		defer client.Close()
 
 	ctx := context.Background()
 	if err := client.Ping(ctx).Err(); err != nil {
-		log.Fatal("Failed to connect to Redis: %v", err)
+		log.Fatalf("Failed to connect to Redis: %v", err)
 	}
 
 	log.Println("Connected to Redis!")
